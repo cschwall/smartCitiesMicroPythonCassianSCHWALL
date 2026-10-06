@@ -1,19 +1,33 @@
 from machine import ADC, Pin, PWM
-from utime import sleep
+from utime import sleep_ms
 
-potentiometre = ADC(0)       # Potentiomètre sur A0
-buzzer = PWM(Pin(16))        # Buzzer sur D16
+potentiometre = ADC(0)   # A0
+buzzer = PWM(Pin(16))    # D16
 
-buzzer.freq(440)             # 440 Hz = note La
+# Notes en Hz
+DO = 262
+RE = 294
+MI = 330
+FA = 349
+SOL = 392
+LA = 440
+SI = 494
 
-while True:
-    valeur = potentiometre.read_u16()
+# Petite mélodie
+melodie = [
+    (DO, 400),
+    (RE, 400),
+    (MI, 400),
+    (DO, 400),
 
-    # On transforme la valeur du potentiomètre en volume
-    volume = valeur // 2
+    (DO, 400),
+    (RE, 400),
+    (MI, 400),
+    (DO, 400),
 
-    buzzer.duty_u16(volume)
+    (MI, 400),
+    (FA, 400),
+    (SOL, 800)
+]
 
-    print("Potentiometre :", valeur, " Volume :", volume)
 
-    sleep(0.05)
