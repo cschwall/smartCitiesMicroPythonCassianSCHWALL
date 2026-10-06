@@ -29,5 +29,30 @@ melodie = [
     (FA, 400),
     (SOL, 800)
 ]
+def jouer_note(frequence, duree):
+    buzzer.freq(frequence)
+
+    temps = 0
+
+    while temps < duree:
+
+        valeur = potentiometre.read_u16()
+        volume = valeur // 2
+
+        buzzer.duty_u16(volume)
+
+        sleep_ms(20)
+
+        temps = temps + 20
+
+    # Petite coupure entre deux notes
+    buzzer.duty_u16(0)
+    sleep_ms(30)
+
+
+while True:
+
+    for note in melodie:
+        jouer_note(note[0], note[1])
 
 
