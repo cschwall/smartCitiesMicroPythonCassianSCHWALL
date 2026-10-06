@@ -6,6 +6,8 @@ buzzer = PWM(Pin(16))    # D16
 bouton = Pin(18, Pin.IN) #D18
 
 numero_musique = 0
+etat_precedent = 0
+etat_bouton = 0
 
 # Notes en Hz
 DO = 262
@@ -52,6 +54,8 @@ melodie2 = [
 melodies = [melodie1, melodie2]
 
 def jouer_note(frequence, duree):
+    global numero_musique, etat_precedent
+
     buzzer.freq(frequence)
 
     temps = 0
@@ -63,18 +67,23 @@ def jouer_note(frequence, duree):
 
         buzzer.duty_u16(volume)
 
-        sleep_ms(20)
+        etat_bouton = bouton.value()
 
+        if etat_bouton == 1 and etat_precedent == 0:
+            numero_musique = (numero_musique + 1) % len(melodies)
+
+        etat_precedent = etat_bouton
+
+        sleep_ms(20)
         temps = temps + 20
 
-    # Petite coupure entre deux notes
     buzzer.duty_u16(0)
     sleep_ms(30)
 
 
 while True:
 
-    for note in melodie:
+    for note in melodies[numero_melodie]:
         jouer_note(note[0], note[1])
 
 
