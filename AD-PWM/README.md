@@ -8,7 +8,7 @@ Regrouper les exercices utilisant les entrées analogiques (ADC) et la modulatio
 
 ## État actuel
 
-Le programme [ex02-buzzer.py](../ex02-buzzer.py) est actuellement conservé à la racine du dépôt. Il utilise un potentiomètre, un bouton et un buzzer, avec deux mélodies définies dans le code. Son classement dans ce dossier et la documentation du montage restent à compléter.
+Le programme du labo 2, [ex02-buzzer.py](ex02-buzzer.py), est classé dans ce dossier. Il utilise un potentiomètre, un bouton et un buzzer, avec deux mélodies définies dans le code. La documentation du montage, de l'utilisation et des essais reste à compléter.
 
 ## Contenu prévu
 

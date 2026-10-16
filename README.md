@@ -23,14 +23,14 @@ Les dossiers sont organisés par thème, conformément au [dépôt de référenc
 
 | Dossier | Thèmes abordés | État du contenu dans le dépôt |
 | --- | --- | --- |
-| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | Programme du labo 1 disponible à la racine : [ledON.py](ledON.py). Classement et README du thème à compléter. |
-| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | Programme du labo 2 disponible à la racine : [ex02-buzzer.py](ex02-buzzer.py). README de démarrage disponible ; classement du programme à effectuer. |
+| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | Programme du labo 1 classé : [ledON.py](GPIO/ledON.py). Documentation du montage et des essais à compléter. |
+| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | Programme du labo 2 classé : [ex02-buzzer.py](AD-PWM/ex02-buzzer.py). Documentation du montage et des essais à compléter. |
 | [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 | [LED_neo](LED_neo/) | LED NeoPixel et animations lumineuses | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 | [sensors](sensors/) | Température, humidité, luminosité et détection de présence | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 | [network](network/) | Accès réseau avec le Raspberry Pi Pico | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 
-Les programmes déjà présents restent pour le moment à la racine. Leur déplacement dans les dossiers thématiques sera effectué dans une étape distincte, en conservant leur historique.
+Les programmes des deux premiers laboratoires sont rangés dans leurs dossiers thématiques. Chaque README de thème donne accès au code et précise la documentation restant à compléter.
 
 ## Documentation des exercices
 
