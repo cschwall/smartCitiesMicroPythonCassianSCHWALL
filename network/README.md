@@ -10,12 +10,13 @@ Regrouper les exercices de connexion et de communication réseau réalisés avec
 
 Ce dossier prépare le classement des exercices réseau. Aucun programme ni essai de connexion n'y est encore documenté.
 
-## Contenu prévu
+## Organisation du thème
 
-- Les programmes de connexion et les échanges réseau demandés dans les exercices.
-- La référence de la carte utilisée et les prérequis de chaque montage.
-- Les explications sur les fonctions et les bibliothèques réellement employées.
-- Pour chaque exercice : l'objectif, les étapes de mise en œuvre, les résultats observés et les difficultés rencontrées.
+- Chaque labo aura son propre sous-dossier, avec un README, ses programmes et les ressources directement liées.
+- Un exemple autonome de connexion ou d'échange pourra rester au niveau de ce thème et être relié depuis les README des labos concernés.
+- Un labo faisant intervenir plusieurs thèmes conserve un seul dossier principal, accessible par des liens depuis les autres thèmes.
+
+Les README des labos préciseront la carte utilisée, les prérequis, les fonctions et bibliothèques employées, les étapes de connexion et d'échange, les résultats réellement observés et les difficultés rencontrées.
 
 ## Ressources
 

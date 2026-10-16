@@ -10,12 +10,13 @@ Regrouper les exercices de commande de LED NeoPixel avec le Raspberry Pi Pico et
 
 Ce dossier prépare le classement des exercices NeoPixel. Aucun programme ni montage n'y est encore documenté.
 
-## Contenu prévu
+## Organisation du thème
 
-- Les programmes de prise en main des LED et les animations réalisées.
-- La référence du module, les branchements et les conditions d'alimentation utilisées.
-- La présentation de la bibliothèque et des fonctions employées dans les exercices.
-- Pour chaque exercice : l'objectif, le principe de l'animation et les résultats observés.
+- Chaque labo aura son propre sous-dossier, avec un README, ses programmes et les ressources directement liées.
+- Un exemple autonome de prise en main pourra rester au niveau de ce thème et être relié depuis les README des labos concernés.
+- Un labo faisant intervenir plusieurs thèmes conserve un seul dossier principal, accessible par des liens depuis les autres thèmes.
+
+Les README des labos préciseront la référence du module, ses branchements et son alimentation, les bibliothèques employées, le principe des couleurs ou des animations et les résultats réellement observés.
 
 ## Ressources
 

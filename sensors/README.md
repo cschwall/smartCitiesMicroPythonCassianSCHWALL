@@ -6,9 +6,13 @@
 
 Regrouper les exercices de mesure et de détection réalisés avec les capteurs reliés au Raspberry Pi Pico en MicroPython.
 
-## État actuel
+## Laboratoires
 
-Ce dossier prépare le classement des exercices sur les capteurs. Aucun programme ni montage n'y est encore documenté.
+| Laboratoire | Contenu | État |
+|---|---|---|
+| [Labo 3 — Thermostat](labo03_thermostat/) | Mesure de température, réglage de consigne, affichage et alertes | Préparation : lecture de la consigne validée ; thermostat à développer |
+
+Chaque laboratoire possède un sous-dossier contenant sa documentation et les fichiers nécessaires à son fonctionnement. Les petits essais préparatoires classés dans un autre thème sont référencés dans son README.
 
 ## Contenu prévu
 

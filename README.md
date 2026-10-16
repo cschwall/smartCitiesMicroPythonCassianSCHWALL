@@ -19,22 +19,24 @@ Les références précises des composants, les branchements et les bibliothèque
 
 ## Organisation du dépôt
 
-Les dossiers sont organisés par thème, conformément au [dépôt de référence du professeur](https://github.com/hepl-scheen/smartcities). Un même dossier peut regrouper plusieurs exercices.
+Les six dossiers thématiques reprennent l'organisation du [dépôt de référence du professeur](https://github.com/hepl-scheen/smartcities). À l'intérieur de ces thèmes, chaque laboratoire possède son propre sous-dossier : son README explique le travail et donne accès aux programmes et aux ressources directement liés au laboratoire.
 
 | Dossier | Thèmes abordés | État du contenu dans le dépôt |
 | --- | --- | --- |
-| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | Labo 1 : [ledON.py](GPIO/ledON.py), explications et compte rendu des essais disponibles. |
-| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | Labo 2 : [ex02-buzzer.py](AD-PWM/ex02-buzzer.py), explications et compte rendu des essais disponibles ; bonus bouton inclus. |
-| [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | Dossier préparé ; programmes et documentation des exercices à intégrer. |
+| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | [Labo 1 — LED et bouton-poussoir](GPIO/labo01_led_bouton/) : programme, explications et essais disponibles. |
+| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | [Labo 2 — Volume d'une mélodie](AD-PWM/labo02_buzzer/) : programme, explications et essais disponibles ; bonus bouton inclus. Exemple autonome [lecture_consigne.py](AD-PWM/lecture_consigne.py) validé pour préparer le labo 3. |
+| [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | L'affichage prévu pour le [labo 3](sensors/labo03_thermostat/) sera documenté avec le thermostat. |
 | [LED_neo](LED_neo/) | LED NeoPixel et animations lumineuses | Dossier préparé ; programmes et documentation des exercices à intégrer. |
-| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | Dossier préparé ; programmes et documentation des exercices à intégrer. |
+| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) en préparation ; lecture de la consigne validée, programme principal à développer. |
 | [network](network/) | Accès réseau avec le Raspberry Pi Pico | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 
-Les programmes des deux premiers laboratoires sont rangés dans leurs dossiers thématiques. Chaque README de thème donne accès au code et précise la documentation restant à compléter.
+La navigation suit trois niveaux : **accueil du dépôt → thème → laboratoire**. Le README d'un thème sert d'index général ; celui d'un laboratoire contient son compte rendu. Le lien du sous-dossier du laboratoire peut ainsi être transmis au professeur pour accéder au travail correspondant.
+
+Un laboratoire qui mobilise plusieurs thèmes est regroupé dans un seul dossier principal. Les autres thèmes peuvent y renvoyer. Les petits exemples préparatoires autonomes restent dans le thème qui décrit le mieux leur rôle, avec un lien depuis le README du laboratoire concerné : c'est le cas de la lecture de consigne, classée dans AD-PWM et référencée par le labo 3.
 
 ## Documentation des exercices
 
-Chaque dossier thématique contient un `README.md`, à enrichir au fil des laboratoires avec :
+Chaque sous-dossier de laboratoire contient un `README.md`, à enrichir au fil du travail avec :
 
 1. L'objectif de l'exercice et le comportement attendu.
 2. Le matériel utilisé et les branchements, accompagnés d'un schéma ou d'une photo si utile.
@@ -43,7 +45,7 @@ Chaque dossier thématique contient un `README.md`, à enrichir au fil des labor
 5. Les essais réalisés, les résultats observés et les difficultés rencontrées.
 6. Les ressources consultées : documentation, fiches techniques et supports du cours.
 
-Les contenus prévus sont distingués des programmes déjà intégrés. Les README de démarrage indiquent les informations restant à compléter.
+Les bibliothèques et les éventuelles photos ou captures seront ajoutées au dossier du laboratoire lorsqu'elles seront nécessaires et disponibles. Les README précisent ce qui a été réalisé, ce qui a été testé et ce qui reste à compléter.
 
 ## Suivi du travail
 
