@@ -23,8 +23,8 @@ Les dossiers sont organisés par thème, conformément au [dépôt de référenc
 
 | Dossier | Thèmes abordés | État du contenu dans le dépôt |
 | --- | --- | --- |
-| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | Programme du labo 1 classé : [ledON.py](GPIO/ledON.py). Documentation du montage et des essais à compléter. |
-| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | Programme du labo 2 classé : [ex02-buzzer.py](AD-PWM/ex02-buzzer.py). Documentation du montage et des essais à compléter. |
+| [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | Labo 1 : [ledON.py](GPIO/ledON.py), explications et compte rendu des essais disponibles. |
+| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | Labo 2 : [ex02-buzzer.py](AD-PWM/ex02-buzzer.py), explications et compte rendu des essais disponibles ; bonus bouton inclus. |
 | [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 | [LED_neo](LED_neo/) | LED NeoPixel et animations lumineuses | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 | [sensors](sensors/) | Température, humidité, luminosité et détection de présence | Dossier préparé ; programmes et documentation des exercices à intégrer. |
