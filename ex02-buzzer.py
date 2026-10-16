@@ -83,7 +83,7 @@ def jouer_note(frequence, duree):
 
 while True:
 
-    for note in melodies[numero_melodie]:
+    for note in melodies[numero_musique]:
         jouer_note(note[0], note[1])
 
 
