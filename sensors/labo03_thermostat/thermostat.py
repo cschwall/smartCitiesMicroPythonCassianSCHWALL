@@ -5,7 +5,9 @@ from lcd1602 import LCD1602
 
 
 potentiometre = ADC(Pin(26))
-led = Pin(16, Pin.OUT, value=0)
+led = PWM(Pin(16))
+led.freq(1000)
+led.duty_u16(0)
 
 buzzer = PWM(Pin(18))
 buzzer.freq(2000)
@@ -20,9 +22,10 @@ lcd.clear()
 
 etat = "NORMAL"
 etat_precedent = None
-intervalle_led = 0
+periode_led = 0
 derniere_mesure = None
-dernier_changement_led = ticks_ms()
+phase_led = 0
+dernier_calcul_led = ticks_ms()
 
 try:
     while True:
@@ -42,14 +45,14 @@ try:
                 
                 if temperature > consigne + 3:
                     etat = "ALARM"
-                    intervalle_led = 200
+                    periode_led = 400
                     ligne_consigne = "Set: {:.1f} ALARM".format(consigne)
                 elif temperature > consigne:
                     etat = "DEPASSEMENT"
-                    intervalle_led = 1000
+                    periode_led = 2000
                 else:
                     etat = "NORMAL"
-                    intervalle_led = 0
+                    periode_led = 0
 
                 print("Etat :", etat,
                       "| Consigne :", round(consigne, 1), "°C",
@@ -58,7 +61,7 @@ try:
             else:
                 
                 etat = "ERREUR"
-                intervalle_led = 0
+                periode_led = 0
                 ligne_temperature = "Erreur capteur"
                 print("Mesure invalide, nouvel essai au prochain tour.")
             
@@ -70,17 +73,30 @@ try:
         maintenant = ticks_ms()
 
         if etat != etat_precedent:
-            led.off()
+            led.duty_u16(0)
             buzzer.duty_u16(32768 if etat == "ALARM" else 0)
-            dernier_changement_led = maintenant
+            phase_led = 0
+            dernier_calcul_led = maintenant
             etat_precedent = etat
 
-        if intervalle_led > 0:
-            if ticks_diff(maintenant, dernier_changement_led) >= intervalle_led:
-                led.toggle()
-                dernier_changement_led = maintenant
+        if periode_led > 0:
+            # Avancer dans le cycle sans attendre la fin du battement.
+            ecoule = ticks_diff(maintenant, dernier_calcul_led)
+            phase_led = (phase_led + ecoule) % periode_led
+            demi_periode = periode_led // 2
+
+            # Monter puis descendre progressivement la commande lumineuse.
+            if phase_led <= demi_periode:
+                luminosite = phase_led * 65535 // demi_periode
+            else:
+                luminosite = (periode_led - phase_led) * 65535 // demi_periode
+
+            led.duty_u16(luminosite)
+
+        dernier_calcul_led = maintenant
 
         sleep_ms(10)
 finally:
     buzzer.duty_u16(0)
-    led.off()
+    led.duty_u16(0)
+    led.deinit()
