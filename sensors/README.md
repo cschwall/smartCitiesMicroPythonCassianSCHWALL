@@ -10,7 +10,7 @@ Regrouper les exercices de mesure et de détection réalisés avec les capteurs 
 
 | Laboratoire | Contenu | État |
 |---|---|---|
-| [Labo 3 — Thermostat](labo03_thermostat/) | Mesure de température, réglage de consigne, affichage et alertes | Préparation : lecture de la consigne validée ; thermostat à développer |
+| [Labo 3 — Thermostat](labo03_thermostat/) | Mesure de température, réglage de consigne, affichage et alertes | Lecture de température validée dans le programme ; consigne validée séparément, intégration à réaliser |
 
 Chaque laboratoire possède un sous-dossier contenant sa documentation et les fichiers nécessaires à son fonctionnement. Les petits essais préparatoires classés dans un autre thème sont référencés dans son README.
 

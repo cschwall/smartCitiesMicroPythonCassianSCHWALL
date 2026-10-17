@@ -16,7 +16,7 @@ Chaque laboratoire possède un sous-dossier contenant son README, ses programmes
 
 [lecture_consigne.py](lecture_consigne.py) lit le potentiomètre sur GP26 et convertit sa valeur en une consigne comprise entre 15 et 35 °C. La variation a été validée sur le matériel, avec affichage dans la console de Thonny.
 
-Cet exemple autonome prépare le [labo 3 — Thermostat](../sensors/labo03_thermostat/), dont le programme et la documentation seront regroupés dans le thème Capteurs. Il reste ici comme exemple de conversion analogique ; le README du labo 3 permet de le retrouver.
+Cet exemple autonome prépare le [labo 3 — Thermostat](../sensors/labo03_thermostat/), dont le programme et la documentation sont regroupés dans le thème Capteurs. Il reste ici comme exemple de conversion analogique ; le README du labo 3 permet de le retrouver.
 
 ## Notions et ressources
 
