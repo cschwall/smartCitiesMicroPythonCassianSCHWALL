@@ -13,6 +13,7 @@ Ce dossier regroupe le programme principal du thermostat, les bibliothèques né
 - [thermostat.py](thermostat.py) : programme principal, réunissant la lecture du potentiomètre, le calcul de la consigne et la mesure de température.
 - [dht20.py](dht20.py) : bibliothèque du capteur, également enregistrée à la racine du Pico pour permettre son import.
 - [lecture_consigne.py](../../AD-PWM/lecture_consigne.py) : exemple préparatoire conservé dans le thème AD-PWM.
+- [test_lcd.py](../../LCD/test_lcd.py) : test autonome d'affichage, conservé dans le thème LCD et validé sur le matériel.
 
 ## État d'avancement
 
@@ -21,7 +22,8 @@ Ce dossier regroupe le programme principal du thermostat, les bibliothèques né
 | Lecture du potentiomètre et calcul de la consigne | Validés sur le matériel ; affichage dans la console de Thonny |
 | Communication I2C et lecture du capteur de température | Validées sur le matériel ; affichage dans la console de Thonny |
 | Consigne et température dans le même programme | Validées sur le matériel ; affichage simultané dans la console de Thonny |
-| Affichage sur le LCD | Bibliothèques installées ; essai d'affichage à effectuer |
+| Test du LCD seul | Validé sur le matériel ; deux lignes de texte affichées |
+| Consigne et température sur le LCD | À intégrer dans le thermostat et à tester |
 | Comparaison, LED et buzzer | À développer et à tester |
 | Mesures au PicoScope des parties 1 et 2 | À réaliser à l'école lorsque l'oscilloscope sera disponible |
 
@@ -29,7 +31,7 @@ Ce dossier regroupe le programme principal du thermostat, les bibliothèques né
 
 - Raspberry Pi Pico et support Grove.
 - Potentiomètre connecté au port A0, correspondant à l'entrée analogique GP26.
-- Écran **Grove — 16x2 LCD (White on Blue)**.
+- Écran **Grove — 16x2 LCD (White on Blue)**, connecté au port I2C1 : SDA sur GP6 et SCL sur GP7.
 - Capteur portant l'inscription **Temperature and Humidity Sensor V2.1**, connecté au port I2C0 : SDA sur GP8 et SCL sur GP9. Sa compatibilité avec le pilote DHT20 est validée par l'essai de lecture.
 - LED et buzzer pour les alertes ; leurs branchements seront précisés lors de leur intégration.
 
@@ -64,13 +66,21 @@ Pour reproduire l'essai, enregistrer `dht20.py` sur le Pico, ouvrir `thermostat.
 
 Ces essais ont été validés sur le matériel. Aucune valeur chiffrée ni mesure d'étalonnage n'a été relevée dans ce compte rendu. Le traitement d'une erreur de contrôle d'intégrité est prévu dans le code, mais n'a pas fait l'objet d'un essai provoqué.
 
+## Affichage LCD : essai préparatoire validé
+
+Le test autonome [test_lcd.py](../../LCD/test_lcd.py) initialise l'écran sur le bus I2C1 à 400 kHz avec la bibliothèque `lcd1602.py`, efface son contenu, puis écrit **SmartCities** sur la première ligne et **LCD pret** sur la seconde. Ces deux lignes se sont affichées correctement lors de l'essai matériel.
+
+Les bibliothèques LCD sont installées sur le Pico ; leurs fichiers restent à ajouter au dépôt. Le [README du thème LCD](../../LCD/README.md) décrit le branchement et les fonctions utilisées dans ce test.
+
+Cette validation concerne l'écran seul. La version actuelle de `thermostat.py` affiche encore la consigne et la température dans la console ; l'intégration de ces valeurs au LCD constitue la prochaine étape.
+
 ## Mise au point
 
 Lors de l'intégration par modifications successives, l'oubli de `ADC` dans l'import a provoqué une erreur `NameError`. L'import a été complété ; un caractère superflu et un doublon dans l'affichage ont également été corrigés. Après correction, l'exécution et l'affichage des deux valeurs ont été validés sur le matériel.
 
 ## Prochaines étapes
 
-1. Tester le LCD seul, puis afficher la consigne et la température ambiante.
+1. Intégrer le LCD dans `thermostat.py`, puis tester l'affichage de la consigne et de la température ambiante.
 2. Comparer les deux températures et ajouter le clignotement de la LED, le buzzer et le message d'alarme selon l'énoncé.
 3. Tester les transitions entre les états et le retour à la normale.
 4. Compléter les branchements, les bibliothèques, les résultats et les éventuelles difficultés dans ce README.

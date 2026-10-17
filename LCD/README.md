@@ -8,19 +8,33 @@ Regrouper les exercices d'affichage de texte et de valeurs sur un écran LCD pil
 
 ## État actuel
 
-L'affichage prévu pour le [labo 3 — Thermostat](../sensors/labo03_thermostat/) est regroupé avec le reste du labo dans le thème `sensors`.
+Le test autonome [test_lcd.py](test_lcd.py) est validé sur le matériel : l'écran affiche **SmartCities** sur la première ligne et **LCD pret** sur la seconde.
 
-Les bibliothèques LCD ont été installées sur le Pico. Leurs fichiers ne figurent pas encore dans le dépôt ; l'affichage reste à intégrer et à tester.
+L'affichage de la consigne et de la température sera intégré au programme du [labo 3 — Thermostat](../sensors/labo03_thermostat/), conservé avec le reste du labo dans le thème `sensors`.
+
+## Test de l'écran
+
+L'écran **Grove — 16x2 LCD (White on Blue)** est branché au port I2C1 du support : SDA sur GP6 et SCL sur GP7. Le programme configure ce bus à 400 kHz et utilise la classe `LCD1602` de la bibliothèque `lcd1602.py`.
+
+Les bibliothèques LCD ont été installées sur le Pico. Leurs fichiers ne figurent pas encore dans le dépôt.
+
+Pour reproduire le test, ouvrir `test_lcd.py` dans Thonny, sélectionner l'interpréteur MicroPython du Pico et lancer le programme.
+
+- `lcd.clear()` efface le contenu de l'écran.
+- `lcd.setCursor(colonne, ligne)` place le curseur ; les coordonnées commencent à zéro.
+- `lcd.print(texte)` écrit à la position choisie.
+
+Le programme écrit les deux lignes une seule fois, puis se termine. Le texte reste affiché ; ce comportement a été confirmé lors de l'essai.
 
 ## Organisation du thème
 
 - Chaque labo principalement consacré à l'affichage aura son propre sous-dossier, avec un README, ses programmes et les ressources directement liées.
-- Un exemple autonome de découverte de l'écran pourra rester au niveau de ce thème et être relié depuis les README des labos concernés.
+- L'exemple autonome `test_lcd.py` reste au niveau de ce thème et est relié depuis le README du labo 3.
 - Un labo faisant intervenir plusieurs thèmes conserve un seul dossier principal, accessible par des liens depuis les autres thèmes.
 
-La documentation précisera la référence de l'écran, ses branchements, les bibliothèques utilisées, les fonctions d'affichage et les résultats réellement observés.
+Les fichiers des bibliothèques et les résultats des prochains essais seront ajoutés au fil de l'avancement.
 
 ## Ressources
 
 - [Consignes et exercices du professeur : LCD](https://github.com/hepl-scheen/smartcities/tree/main/LCD)
-- La documentation du matériel et de sa bibliothèque sera ajoutée après identification des références utilisées.
+- [Documentation du kit Grove pour Raspberry Pi Pico](https://wiki.seeedstudio.com/Grove-Starter-Kit-for-Raspberry-Pi-Pico/).
