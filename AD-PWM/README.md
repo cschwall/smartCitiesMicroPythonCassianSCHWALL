@@ -12,11 +12,13 @@ Ce thème regroupe la lecture analogique (ADC) et la modulation de largeur d'imp
 
 Chaque laboratoire possède un sous-dossier contenant son README, ses programmes et les ressources directement liées au montage.
 
-## Exemple préparatoire
+## Exemples préparatoires
 
 [lecture_consigne.py](lecture_consigne.py) lit le potentiomètre sur GP26 et convertit sa valeur en une consigne comprise entre 15 et 35 °C. La variation a été validée sur le matériel, avec affichage dans la console de Thonny.
 
-Cet exemple autonome prépare le [labo 3 — Thermostat](../sensors/labo03_thermostat/), dont le programme et la documentation sont regroupés dans le thème Capteurs. Il reste ici comme exemple de conversion analogique ; le README du labo 3 permet de le retrouver.
+[test_led_progressive.py](test_led_progressive.py) commande la LED sur GP16 avec un PWM à 1 000 Hz. Son rapport cyclique augmente puis diminue, pour un battement lumineux d'environ deux secondes. Cette variation progressive a été validée sur le matériel.
+
+Ces exemples autonomes préparent le [labo 3 — Thermostat](../sensors/labo03_thermostat/), dont le programme et la documentation sont regroupés dans le thème Capteurs. La consigne y est déjà validée ; la variation progressive de la LED vient d'être intégrée et reste à tester dans le montage complet. Les exemples restent ici pour illustrer séparément la conversion analogique et la commande PWM.
 
 ## Notions et ressources
 

@@ -24,10 +24,10 @@ Les six dossiers thématiques reprennent l'organisation du [dépôt de référen
 | Dossier | Thèmes abordés | État du contenu dans le dépôt |
 | --- | --- | --- |
 | [GPIO](GPIO/) | LED, bouton-poussoir et interruptions | [Labo 1 — LED et bouton-poussoir](GPIO/labo01_led_bouton/) : programme, explications et essais disponibles. |
-| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | [Labo 2 — Volume d'une mélodie](AD-PWM/labo02_buzzer/) : programme, explications et essais disponibles ; bonus bouton inclus. Exemple autonome [lecture_consigne.py](AD-PWM/lecture_consigne.py) validé pour préparer le labo 3. |
-| [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | [test_lcd.py](LCD/test_lcd.py) : affichage sur deux lignes validé ; intégration des valeurs du thermostat à réaliser. |
+| [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | [Labo 2 — Volume d'une mélodie](AD-PWM/labo02_buzzer/) : programme, explications et essais disponibles ; bonus bouton inclus. Exemples autonomes [lecture_consigne.py](AD-PWM/lecture_consigne.py) et [test_led_progressive.py](AD-PWM/test_led_progressive.py) validés pour préparer le labo 3. |
+| [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | [test_lcd.py](LCD/test_lcd.py) et affichage de la consigne et de la température dans le [thermostat](sensors/labo03_thermostat/) validés. |
 | [LED_neo](LED_neo/) | LED NeoPixel et animations lumineuses | Dossier préparé ; programmes et documentation des exercices à intégrer. |
-| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) en cours : consigne et température validées dans la console, test LCD seul validé ; affichage des valeurs sur le LCD à intégrer. |
+| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) : version principale validée ; bonus LED progressive intégré, à tester sur le montage. Bonus LCD et mesures PicoScope des parties 1 et 2 à réaliser. |
 | [network](network/) | Accès réseau avec le Raspberry Pi Pico | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 
 La navigation suit trois niveaux : **accueil du dépôt → thème → laboratoire**. Le README d'un thème sert d'index général ; celui d'un laboratoire contient son compte rendu. Le lien du sous-dossier du laboratoire peut ainsi être transmis au professeur pour accéder au travail correspondant.
