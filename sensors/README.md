@@ -10,7 +10,7 @@ Regrouper les exercices de mesure et de détection réalisés avec les capteurs 
 
 | Laboratoire | Contenu | État |
 |---|---|---|
-| [Labo 3 — Thermostat](labo03_thermostat/) | Mesure de température, réglage de consigne, affichage et alertes | Version principale validée ; LED progressive intégrée, à tester sur le montage. Bonus LCD et mesures PicoScope des parties 1 et 2 à réaliser |
+| [Labo 3 — Thermostat](labo03_thermostat/) | Mesure de température, réglage de consigne, affichage et alertes | Version principale et LED progressive validées sur le matériel. Bonus LCD facultatifs et mesures PicoScope des parties 1 et 2 à réaliser |
 
 Chaque laboratoire possède un sous-dossier contenant sa documentation et les fichiers nécessaires à son fonctionnement. Les petits essais préparatoires classés dans un autre thème sont référencés dans son README.
 

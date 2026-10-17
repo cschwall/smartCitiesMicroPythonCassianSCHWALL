@@ -6,7 +6,7 @@
 
 Réaliser un thermostat avec le Raspberry Pi Pico en MicroPython : régler une température de consigne entre 15 et 35 °C avec un potentiomètre, mesurer la température ambiante et afficher les deux valeurs sur un écran LCD. Une LED et un buzzer signalent les dépassements définis dans l'énoncé.
 
-Ce dossier regroupe le programme principal du thermostat, les bibliothèques nécessaires et la documentation de son montage. Les exigences principales de la partie 3 ont été validées fonctionnellement sur le matériel avec la LED en tout ou rien : lectures, affichage, clignotement lent et alarme avec buzzer, LED accélérée et message **ALARM**. Le bonus de luminosité progressive, validé dans un test autonome, vient d'être intégré au thermostat ; son essai dans le montage complet reste à faire. Les bonus d'affichage et les mesures au PicoScope des parties 1 et 2 restent à réaliser.
+Ce dossier regroupe le programme principal du thermostat, les bibliothèques nécessaires et la documentation de son montage. Les exigences principales de la partie 3 ont été validées fonctionnellement sur le matériel : lectures, affichage, signalement du dépassement et alarme avec buzzer, LED accélérée et message **ALARM**. Le bonus de luminosité progressive a ensuite été intégré et validé sur le montage complet. Les deux bonus d'affichage restent facultatifs ; les mesures au PicoScope des parties 1 et 2 seront réalisées à l'école.
 
 ## Fichiers
 
@@ -29,7 +29,7 @@ Ce dossier regroupe le programme principal du thermostat, les bibliothèques né
 | Comparaison des températures et clignotement lent de la LED | Validés fonctionnellement sur le matériel ; fréquence nominale prévue de 0,5 Hz, non mesurée au PicoScope |
 | Alarme au-delà de la consigne + 3 °C : buzzer, LED accélérée et message | Validés fonctionnellement sur le matériel, ainsi que les retours entre les trois états ; fréquence nominale de la LED prévue de 2,5 Hz |
 | Test autonome de luminosité progressive de la LED | Validé sur le matériel ; montée et descente de luminosité observées |
-| Bonus : luminosité progressive intégrée au thermostat | Implémenté ; essai du montage complet à réaliser |
+| Bonus : luminosité progressive intégrée au thermostat | Validé sur le montage complet ; fonctionnement conservé avec variation progressive de la LED |
 | Bonus : ALARM clignotant et ALARM défilant | Non implémentés |
 | Mesures au PicoScope des parties 1 et 2 | À réaliser à l'école lorsque l'oscilloscope sera disponible |
 
@@ -112,11 +112,11 @@ Dans la version précédemment validée, `led.toggle()` inversait l'état de la 
 | Passage à l'état ALARM | LED accélérée, buzzer actif et message **ALARM** sur le LCD |
 | Retour ALARM → DEPASSEMENT → NORMAL | Arrêt du buzzer dès la sortie d'alarme, retour au clignotement lent puis extinction ; LCD et console toujours actualisés |
 
-L'ensemble de ces comportements a été confirmé sur le matériel dans la version à clignotement tout ou rien, avant l'intégration de la luminosité progressive. L'essai de la nouvelle version reste à réaliser. Les seuils exacts à l'égalité n'ont pas fait l'objet de relevés chiffrés : le tableau décrit les conditions du programme.
+L'ensemble de ces comportements a d'abord été confirmé sur le matériel dans la version à clignotement tout ou rien. Après l'intégration de la luminosité progressive, l'essai du montage complet a confirmé le maintien du fonctionnement du thermostat avec la nouvelle variation de la LED. Les seuils exacts à l'égalité n'ont pas fait l'objet de relevés chiffrés : le tableau décrit les conditions du programme.
 
 Si le contrôle `crc_ok` échoue, le code prévoit l'état ERREUR, le texte **Erreur capteur**, l'extinction de la LED et le silence du buzzer. Le bloc `finally` prévoit également l'arrêt des deux sorties lors d'une interruption du programme. Ces deux cas n'ont pas fait l'objet d'essais provoqués.
 
-## Bonus PWM : test validé, intégration à vérifier
+## Bonus PWM : test autonome et intégration validés
 
 Le test autonome [test_led_progressive.py](../../AD-PWM/test_led_progressive.py) fait monter puis descendre le rapport cyclique de la LED sur GP16, avec des boucles `for` et de courtes pauses. Le battement progressif a été observé sur le matériel ; sa période complète est prévue à environ deux secondes, sans mesure au PicoScope.
 
@@ -126,7 +126,7 @@ L'intégration utilise `ticks_ms()` et `ticks_diff()` pour ajouter le temps éco
 
 Le buzzer reste à 2 000 Hz pendant ALARM et le message **ALARM** reste fixe sur le LCD. Les bibliothèques n'ont pas changé. Le bloc `finally` coupe les sorties et désactive le PWM de la LED à l'interruption.
 
-L'essai à réaliser consiste à parcourir NORMAL → DEPASSEMENT → ALARM puis à revenir vers NORMAL : vérifier la variation progressive et son accélération, l'arrêt du buzzer en quittant ALARM et la continuité de l'affichage des deux températures.
+L'essai du montage complet a confirmé une variation progressive de la luminosité et un fonctionnement cohérent avec la version précédente. Cette validation est fonctionnelle : aucune période ni courbe de luminosité n'a été mesurée au PicoScope.
 
 ## Mise au point
 
@@ -134,13 +134,13 @@ Lors de l'intégration par modifications successives, l'oubli de `ADC` dans l'im
 
 Une relecture après l'ajout de la LED a repéré un défaut d'indentation : les lectures et l'affichage restaient exécutés à chaque tour. La correction a été appliquée lors de l'ajout de l'alarme : ces opérations se trouvent désormais dans la condition des 1 000 ms. Le fonctionnement global a ensuite été validé sur le matériel, sans mesure précise des temporisations.
 
-## Prochaines étapes
+## Travail restant pour le labo 3
 
-1. Tester la luminosité progressive intégrée au thermostat et les retours entre les trois états.
-2. Réaliser les bonus d'affichage : message **ALARM** clignotant, puis défilant.
-3. Compléter les essais et les éventuelles difficultés dans ce README au fil de ces ajouts.
+1. Réaliser à l'école les mesures au PicoScope des parties 1 et 2 sur les signaux PWM et les échanges I2C, puis ajouter les observations et captures.
+2. Si souhaité, réaliser les deux bonus d'affichage : message **ALARM** clignotant, puis défilant.
+3. Compléter ce compte rendu avec une photo du montage ou des relevés d'essais lorsqu'ils seront disponibles.
 
-Les parties de mesure au PicoScope permettront de vérifier les signaux PWM et les échanges I2C. Aucun résultat de ces mesures n'est encore disponible ; les observations et captures seront ajoutées après leur réalisation.
+La partie 3 principale et le bonus de luminosité progressive sont terminés et validés fonctionnellement sur le matériel. Aucun résultat des mesures PicoScope n'est encore disponible. Les bonus LCD ne sont pas nécessaires pour commencer l'exercice 4.
 
 ## Ressources
 
