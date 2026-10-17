@@ -27,7 +27,7 @@ Les six dossiers thématiques reprennent l'organisation du [dépôt de référen
 | [AD-PWM](AD-PWM/) | Lecture analogique, potentiomètre, PWM, musique et servomoteur | [Labo 2 — Volume d'une mélodie](AD-PWM/labo02_buzzer/) : programme, explications et essais disponibles ; bonus bouton inclus. Exemple autonome [lecture_consigne.py](AD-PWM/lecture_consigne.py) validé pour préparer le labo 3. |
 | [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | L'affichage prévu pour le [labo 3](sensors/labo03_thermostat/) sera documenté avec le thermostat. |
 | [LED_neo](LED_neo/) | LED NeoPixel et animations lumineuses | Dossier préparé ; programmes et documentation des exercices à intégrer. |
-| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) en cours : lecture de température validée dans le programme, consigne validée séparément ; intégration des deux valeurs à réaliser. |
+| [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) en cours : consigne et température affichées ensemble dans la console et validées ; affichage LCD à réaliser. |
 | [network](network/) | Accès réseau avec le Raspberry Pi Pico | Dossier préparé ; programmes et documentation des exercices à intégrer. |
 
 La navigation suit trois niveaux : **accueil du dépôt → thème → laboratoire**. Le README d'un thème sert d'index général ; celui d'un laboratoire contient son compte rendu. Le lien du sous-dossier du laboratoire peut ainsi être transmis au professeur pour accéder au travail correspondant.
