@@ -1,6 +1,6 @@
 from machine import ADC, Pin
 from neopixel import NeoPixel
-from utime import sleep_ms, ticks_ms, ticks_diff
+from utime import sleep_ms, ticks_ms, ticks_diff, ticks_add
 from random import randint
 
 # --- Initialisation du materiel ---
@@ -20,6 +20,15 @@ INTERVALLE_MIN = 300     # 200 BPM maximum
 INTERVALLE_MAX = 1500    # 40 BPM minimum
 
 dernier_battement = None
+
+# --- BONUS 2 : Moyenne et enregistrement ---
+
+DUREE_MINUTE = 60000
+
+somme_bpm = 0
+nombre_bpm = 0
+numero_minute = 0
+
 
 # --- Couleurs disponibles ---
 
@@ -100,6 +109,33 @@ def calculer_bpm(maintenant):
 
     dernier_battement = maintenant
 
+# --- BONUS 2 : Enregistrement des BPM ---
+
+def enregistrer_moyenne(minute, somme, nombre):
+
+    if nombre > 0:
+        bpm_moyen = round(somme / nombre, 1)
+
+        ligne = "Minute {} : {} BPM ({} mesures)\n".format(
+            minute, bpm_moyen, nombre
+        )
+
+    else:
+        ligne = "Minute {} : aucune mesure valide\n".format(
+            minute
+        )
+
+    # Mode ajout : conserve les anciennes donnees
+    with open("bpm.txt", "a") as fichier:
+
+        # Separateur entre deux executions
+        if minute == 1:
+            fichier.write("\n--- Nouvelle session ---\n")
+
+        fichier.write(ligne)
+
+    print("Enregistrement :", ligne.strip())
+
 
 # --- Calibrage initial ---
 
@@ -121,6 +157,8 @@ print("Amplitude moyenne initiale :", moyenne)
 
 dernier_pic = ticks_ms() - DELAI_MINIMUM
 dernier_affichage = ticks_ms()
+debut_minute = ticks_ms()
+
 pret = True
 
 
@@ -130,6 +168,25 @@ try:
     while True:
         amplitude = mesurer_amplitude()
         maintenant = ticks_ms()
+        
+        # BONUS 2 : Verification des 60 secondes
+        if ticks_diff(maintenant, debut_minute) >= DUREE_MINUTE:
+
+            numero_minute += 1
+
+            enregistrer_moyenne(
+                numero_minute,
+                somme_bpm,
+                nombre_bpm
+            )
+
+            # Remise a zero pour la minute suivante
+            somme_bpm = 0
+            nombre_bpm = 0
+
+            debut_minute = ticks_add(
+                debut_minute, DUREE_MINUTE
+            )
 
         seuil = max(
             SEUIL_MINIMUM,
