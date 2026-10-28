@@ -1,4 +1,3 @@
-
 from machine import ADC, Pin
 from neopixel import NeoPixel
 from utime import sleep_ms, ticks_ms, ticks_diff
@@ -14,6 +13,13 @@ led = NeoPixel(Pin(18), 1)     # LED RGB sur D18
 FACTEUR_SENSIBILITE = 1.3
 SEUIL_MINIMUM = 500
 DELAI_MINIMUM = 300
+
+# --- BONUS 1 : Parametres BPM ---
+
+INTERVALLE_MIN = 300     # 200 BPM maximum
+INTERVALLE_MAX = 1500    # 40 BPM minimum
+
+dernier_battement = None
 
 # --- Couleurs disponibles ---
 
@@ -69,6 +75,31 @@ def changer_couleur():
 
     print("Nouvelle couleur :", couleurs[indice])
 
+# --- BONUS 1 : Calcul des BPM ---
+
+def calculer_bpm(maintenant):
+    global dernier_battement
+
+    if dernier_battement is not None:
+
+        intervalle = ticks_diff(
+            maintenant, dernier_battement
+        )
+
+        if INTERVALLE_MIN <= intervalle <= INTERVALLE_MAX:
+
+            bpm = round(60000 / intervalle)
+
+            print("Rythme estime :", bpm, "BPM")
+
+        else:
+            print("Intervalle ignore :", intervalle, "ms")
+
+    else:
+        print("Premier battement : attente du suivant")
+
+    dernier_battement = maintenant
+
 
 # --- Calibrage initial ---
 
@@ -114,7 +145,10 @@ try:
 
             # Changement de couleur a chaque pic
             changer_couleur()
-
+            
+            # BONUS 1 : Calcul du rythme
+            calculer_bpm(maintenant)
+            
             dernier_pic = maintenant
             pret = False
 
@@ -127,8 +161,8 @@ try:
 
         # Affichage periodique
         if ticks_diff(maintenant, dernier_affichage) >= 300:
-            print("Amplitude :", amplitude,
-                  "| Seuil :", int(seuil))
+#             print("Amplitude :", amplitude,
+#                   "| Seuil :", int(seuil))
             dernier_affichage = maintenant
 
 finally:
