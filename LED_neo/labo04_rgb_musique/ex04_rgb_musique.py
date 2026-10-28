@@ -98,6 +98,8 @@ def calculer_bpm(maintenant):
         if INTERVALLE_MIN <= intervalle <= INTERVALLE_MAX:
 
             bpm = round(60000 / intervalle)
+            somme_bpm += bpm
+            nombre_bpm += 1
 
             print("Rythme estime :", bpm, "BPM")
 
