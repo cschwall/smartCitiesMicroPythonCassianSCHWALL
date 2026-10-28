@@ -4,21 +4,39 @@
 
 ## Objectif
 
-Regrouper les exercices de commande de LED NeoPixel avec le Raspberry Pi Pico et MicroPython : couleurs, luminosité et animations.
+Regrouper les programmes et ressources consacrés aux LED RGB adressables (NeoPixel) avec Raspberry Pi Pico et MicroPython : choix des couleurs, animations et réactions aux mesures de capteurs.
 
-## État actuel
+## Laboratoires
 
-Ce dossier prépare le classement des exercices NeoPixel. Aucun programme ni montage n'y est encore documenté.
+| Laboratoire | Contenu | État |
+| --- | --- | --- |
+| [Labo 4 — LED RGB synchronisée avec la musique](labo04_rgb_musique/) | Microphone analogique, détection adaptative des pics, couleurs aléatoires, estimation des BPM et enregistrement périodique dans un fichier texte | Fonctionnalités principales et BPM validés sur le matériel ; accumulation des BPM et vérification du fichier à finaliser |
 
-## Organisation du thème
+Le labo 4 dispose de son propre [compte rendu](labo04_rgb_musique/README.md), qui détaille les branchements, le fonctionnement, les essais réalisés et le point restant à corriger pour le second bonus.
 
-- Chaque labo aura son propre sous-dossier, avec un README, ses programmes et les ressources directement liées.
-- Un exemple autonome de prise en main pourra rester au niveau de ce thème et être relié depuis les README des labos concernés.
-- Un labo faisant intervenir plusieurs thèmes conserve un seul dossier principal, accessible par des liens depuis les autres thèmes.
+## Programmes du labo 4
 
-Les README des labos préciseront la référence du module, ses branchements et son alimentation, les bibliothèques employées, le principe des couleurs ou des animations et les résultats réellement observés.
+- [test_rgb.py](labo04_rgb_musique/test_rgb.py) : contrôle successif du rouge, du vert et du bleu.
+- [test_micro.py](labo04_rgb_musique/test_micro.py) : acquisition analogique et amplitude du son.
+- [test_detection.py](labo04_rgb_musique/test_detection.py) : détection de pics avec seuil adaptatif et réarmement.
+- [ex04_rgb_musique.py](labo04_rgb_musique/ex04_rgb_musique.py) : intégration du microphone, de la LED RGB et des deux bonus.
+
+Le matériel utilisé comprend un **Grove Sound Sensor** sur **A1 / GP27** et une **Grove RGB LED WS2813 Mini** sur **D18 / GP18**, avec le Grove Shield du Raspberry Pi Pico. Le programme utilise `neopixel` pour la LED et `ADC` pour le microphone.
+
+## Notions mises en pratique
+
+- Couleurs RGB représentées par un triplet et envoyées à une LED adressable avec `NeoPixel.write()`.
+- Lecture d'une entrée analogique grâce à `ADC.read_u16()`.
+- Estimation de l'amplitude d'un signal à partir de son minimum et de son maximum.
+- Détection de pics sonores avec seuil adaptatif, temporisation et réarmement.
+- Mesure des intervalles avec `ticks_ms()` et `ticks_diff()`, puis estimation du BPM.
+- Écriture de données sur le Pico avec `with open(..., "a")`.
+
+Le labo concerne aussi le traitement d'un signal de capteur, mais son programme principal est classé ici pour conserver **un seul dossier par laboratoire** et éviter les copies divergentes.
 
 ## Ressources
 
-- [Consignes et exercices du professeur : LED_neo](https://github.com/hepl-scheen/smartcities/tree/main/LED_neo)
-- La documentation du module et de sa bibliothèque sera ajoutée après identification des références utilisées.
+- [Consignes du professeur : LED_neo](https://github.com/hepl-scheen/smartcities/tree/main/LED_neo).
+- *Beginner's Guide for Raspberry Pi Pico*, leçon 12 : **Intelligent Light**.
+- [Référence du module NeoPixel dans MicroPython](https://docs.micropython.org/en/latest/library/neopixel.html).
+- [Documentation du kit Grove](https://wiki.seeedstudio.com/Grove-Starter-Kit-for-Raspberry-Pi-Pico/).
