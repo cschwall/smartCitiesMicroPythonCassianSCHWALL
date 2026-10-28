@@ -10,9 +10,9 @@ Regrouper les programmes et ressources consacrés aux LED RGB adressables (NeoPi
 
 | Laboratoire | Contenu | État |
 | --- | --- | --- |
-| [Labo 4 — LED RGB synchronisée avec la musique](labo04_rgb_musique/) | Microphone analogique, détection adaptative des pics, couleurs aléatoires, estimation des BPM et enregistrement périodique dans un fichier texte | Fonctionnalités principales et BPM validés sur le matériel ; accumulation des BPM et vérification du fichier à finaliser |
+| [Labo 4 — LED RGB synchronisée avec la musique](labo04_rgb_musique/) | Microphone analogique, détection adaptative des pics, couleurs aléatoires, estimation des BPM et enregistrement périodique dans un fichier texte | Fonctionnalités principales et BPM validés ; incréments des accumulateurs ajoutés, portée `global` et vérification du fichier encore nécessaires |
 
-Le labo 4 dispose de son propre [compte rendu](labo04_rgb_musique/README.md), qui détaille les branchements, le fonctionnement, les essais réalisés et le point restant à corriger pour le second bonus.
+Le labo 4 dispose de son propre [compte rendu](labo04_rgb_musique/README.md), qui détaille les branchements, le fonctionnement, les essais réalisés et l'état précis de la correction du second bonus.
 
 ## Programmes du labo 4
 
