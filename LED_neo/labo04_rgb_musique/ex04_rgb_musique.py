@@ -88,6 +88,7 @@ def changer_couleur():
 
 def calculer_bpm(maintenant):
     global dernier_battement
+    global somme_bpm, nombre_bpm
 
     if dernier_battement is not None:
 
