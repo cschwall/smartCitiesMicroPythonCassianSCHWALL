@@ -93,9 +93,9 @@ Le programme contient une fonction `enregistrer_moyenne(minute, somme, nombre)`,
 
 Le fichier `bpm.txt` est créé **sur le système de fichiers du Pico** lorsqu'on exécute le programme sur la carte ; il n'est pas automatiquement synchronisé avec ce dépôt GitHub. Seules les périodes complètes sont écrites : une minute interrompue avant son échéance n'est pas enregistrée.
 
-**Correction en cours :** lors du premier essai, le fichier `bpm.txt` ne contenait pas de moyenne numérique : les accumulateurs n'étaient pas alimentés. Les instructions `somme_bpm += bpm` et `nombre_bpm += 1` ont désormais été ajoutées après le calcul d'un BPM valide dans le code publié.
+**Fonctionnement validé sur le Pico :** à chaque BPM valide, `calculer_bpm()` ajoute la valeur à `somme_bpm` et incrémente `nombre_bpm`. La fonction déclare désormais ces accumulateurs avec `global somme_bpm, nombre_bpm`. À chaque minute complète, le programme calcule leur moyenne, l'enregistre dans `bpm.txt`, puis remet les accumulateurs à zéro pour la période suivante.
 
-**Dernier point à corriger :** la fonction `calculer_bpm()` ne déclare pas encore `somme_bpm` et `nombre_bpm` comme variables globales. Leur modification avec `+=` peut donc provoquer `UnboundLocalError` dès le premier BPM valide. Ajouter `global somme_bpm, nombre_bpm` dans cette fonction, puis relancer le programme sur le Pico pendant au moins 60 secondes et vérifier que `bpm.txt` contient effectivement une moyenne numérique. La validation matérielle de ce dernier correctif n'est pas encore documentée.
+**Observation :** après ces corrections, le fichier texte a été consulté sur le Pico. L'enregistrement de moyennes numériques, présentes et jugées cohérentes avec les essais, a été confirmé. Aucune valeur BPM précise n'a été reportée dans ce compte rendu.
 
 ## État des essais
 
@@ -106,13 +106,13 @@ Le fichier `bpm.txt` est créé **sur le système de fichiers du Pico** lorsqu'o
 | Seuil adaptatif, délai et réarmement | **Validés fonctionnellement** |
 | Changement aléatoire de couleur sur un pic détecté | **Validé fonctionnellement** |
 | Bonus 1 : affichage du BPM estimé | **Validé fonctionnellement** |
-| Bonus 2 : écriture d'une moyenne réelle toutes les minutes | **Accumulation ajoutée ; déclaration `global` et vérification du fichier sur le Pico encore nécessaires** |
+| Bonus 2 : écriture d'une moyenne réelle toutes les minutes | **Validée sur le Pico : fichier texte contenant des moyennes numériques cohérentes** |
 
-Ces validations reposent sur les observations faites au cours des essais, sans relevé chiffré des amplitudes ou des BPM conservé dans ce dépôt. Aucune précision métrologique ni synchronisation parfaite avec le tempo musical n'a été établie.
+Ces validations reposent sur les observations faites au cours des essais, y compris la lecture du fichier `bpm.txt` sur le Pico après correction. Aucun relevé chiffré des amplitudes ou des moyennes BPM n'est conservé dans ce dépôt. Aucune précision métrologique ni synchronisation parfaite avec le tempo musical n'a été établie.
 
 ## Mise au point
 
-Le premier essai de l'enregistrement périodique a provoqué une erreur `NameError: name 'ticks_add' isn't defined` à l'échéance de la minute. L'import de `ticks_add` a ensuite été ajouté ; la version publiée le contient. Un deuxième essai a révélé l'absence de valeurs moyennes dans le fichier texte : les deux incréments ont été ajoutés au programme, mais leur portée doit encore être corrigée avec une déclaration `global` avant de valider l'enregistrement. Ces retours d'expérience soulignent l'importance de tester non seulement le déclenchement à 60 secondes, mais aussi le contenu réellement sauvegardé.
+Lors d'un premier essai de l'enregistrement périodique, l'absence d'import de `ticks_add` a provoqué une erreur `NameError` à l'échéance de la minute. Après l'ajout de cet import, l'inspection de `bpm.txt` a montré l'absence de moyennes numériques : les accumulateurs n'étaient pas incrémentés. L'ajout de `somme_bpm += bpm` et `nombre_bpm += 1` a nécessité également la déclaration `global somme_bpm, nombre_bpm` dans `calculer_bpm()`. Le programme corrigé a ensuite été exécuté, et la présence de données cohérentes dans `bpm.txt` a été confirmée sur le Pico. Ces corrections montrent l'intérêt de vérifier le contenu effectivement sauvegardé, et pas seulement l'exécution de la minuterie.
 
 Le traitement sonore reste volontairement simple et dépend notamment du volume, de la distance au microphone, de la musique et des seuils choisis. L'absence de filtrage par bande fréquentielle peut conduire à détecter d'autres sons que les battements recherchés.
 
