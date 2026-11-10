@@ -53,7 +53,13 @@ Valeurs obtenues lors de `test_angles.py` :
 | 9 h 00 | 135° |
 | 3 h 30 | 52,5° |
 
-Les cinq résultats ont été validés dans la console Thonny.
+Pour répondre à la consigne du **cadran complet**, voici toutes les heures entières sur le demi-cadran, de 12 h (0°) à 11 h (165°) :
+
+| Heure | 12 h | 1 h | 2 h | 3 h | 4 h | 5 h | 6 h | 7 h | 8 h | 9 h | 10 h | 11 h |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Angle | 0° | 15° | 30° | 45° | 60° | 75° | 90° | 105° | 120° | 135° | 150° | 165° |
+
+Les cinq résultats du programme de test ont été validés dans Thonny ; les autres angles de la table sont déduits de la formule. La consigne de dessin du cadran sur papier peut être satisfaite par un croquis supplémentaire si demandé littéralement par l'enseignant.
 
 ## 3. Commande du servomoteur
 
