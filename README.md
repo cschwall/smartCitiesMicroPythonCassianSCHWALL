@@ -6,7 +6,7 @@ Ce dépôt rassemble les programmes, les explications et les ressources des labo
 
 ## Matériel et environnement de travail
 
-- **Raspberry Pi Pico** : carte à microcontrôleur utilisée pour lire des entrées, commander des sorties et interagir avec des composants électroniques.
+- **Raspberry Pi Pico W** : carte à microcontrôleur utilisée pour lire des entrées, commander des sorties et interagir avec des composants électroniques.
 - **MicroPython** : environnement permettant de programmer le microcontrôleur en Python, notamment avec les fonctions du module `machine`.
 - **Thonny** : environnement de développement utilisé pour écrire les programmes et les exécuter sur la carte.
 - **Git, GitHub Desktop et GitHub** : outils utilisés pour conserver l'historique des modifications et publier le travail.
@@ -28,7 +28,7 @@ Les six dossiers thématiques reprennent l'organisation du [dépôt de référen
 | [LCD](LCD/) | Affichage LCD et documentation des fonctions de la bibliothèque | [test_lcd.py](LCD/test_lcd.py) et affichage de la consigne et de la température dans le [thermostat](sensors/labo03_thermostat/) validés. |
 | [LED_neo](LED_neo/) | LED NeoPixel, microphone et réactions lumineuses au rythme de la musique | [Labo 4 — LED RGB synchronisée avec la musique](LED_neo/labo04_rgb_musique/) : **exercice principal et deux bonus validés sur le Pico**, avec enregistrement de moyennes BPM cohérentes dans `bpm.txt`. |
 | [sensors](sensors/) | Température, humidité, luminosité et détection de présence | [Labo 3 — Thermostat](sensors/labo03_thermostat/) : version principale et bonus LED progressive validés sur le matériel. Bonus LCD facultatifs et mesures PicoScope des parties 1 et 2 à réaliser. |
-| [network](network/) | Accès réseau avec le Raspberry Pi Pico | Dossier préparé ; programmes et documentation des exercices à intégrer. |
+| [network](network/) | Wi-Fi, synchronisation NTP et mesures énergétiques | [Labo 5 — Horloge connectée et profilage énergétique](network/labo05_horloge_connectee/) : Wi-Fi/NTP, servomoteur et acquisitions PPK2 ; limites du deep sleep discutées dans le compte rendu. |
 
 La navigation suit trois niveaux : **accueil du dépôt → thème → laboratoire**. Le README d'un thème sert d'index général ; celui d'un laboratoire contient son compte rendu. Le lien du sous-dossier du laboratoire peut ainsi être transmis au professeur pour accéder au travail correspondant.
 
